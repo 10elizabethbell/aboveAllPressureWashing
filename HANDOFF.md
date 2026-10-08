@@ -20,6 +20,8 @@
 - Testimonials are labelled "Testimonial on aboveallprowash.com" because they have no platform, date or stars. Two painting-focused ones (Richard M, Andrew C) are left out.
 - The siding pair isn't a slider because the before and after are from different angles. They sit side by side instead.
 - **Type:** system font stack (your house style) instead of Impeccable's "self-host a display face" rule.
+- **No Impeccable concept roll / seed key:** the world was chosen unattended from the list below, so the contract has no seed.
+- Review round (Impeccable finish reviewer): applied crisper wash cut, mildew collecting under each board lip, wet (not foggy) sheen, fan-shaped jet, sky-on-light contrast token `--sky-ink`, removed the "Shrink-wrap season" eyebrow and the faux film stripes, "…" on trimmed quotes, desktop numbers on text buttons, close wash strip pre-cleaned as the payoff (no regrow there). Kept against its advice after checking their site: Caitlin G's review, "get it right the first time, every time", furniture washing, and the shrink-wrap item list (all on aboveallprowash.com).
 
 ## Placeholders and gaps
 - No hours, prices or Google/Yelp reviews (none published). Nothing invented.
@@ -37,6 +39,7 @@
 ## Ideas not built (yours to pick)
 - **Runner-up world: shrink film.** The whole page is wrapped in glossy film that creases and stretches under the finger, peeling back to reveal sections. Strong for the seasonal push, weaker for washing.
 - Other worlds considered: rain off a clean gutter (water sheeting off a roofline), soft-wash foam on siding, driveway pavers revealed tile by tile, sky/"Above All" clouds.
+- Reviewer ideas not built: before/after divider drawn as the hero's fan spray with droplets; photo frames in the world's own material (wet siding edge / water sheet overlapping a seam) instead of white-bordered rounded frames; drips sheeting down freshly washed boards.
 - Wash-panel game: "Clean 80% and get…" (only if Sean offers a promo), or the grime spelling a hidden message ("Call Sean") once cleaned.
 - Booking form page (`book.html`) that composes the same pre-filled text, with a copy fallback.
 - Seasonal toggle: swap the hero to the shrink-wrap pitch in Oct–Nov, back to washing in spring.
