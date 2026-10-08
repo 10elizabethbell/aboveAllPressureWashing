@@ -180,7 +180,7 @@ section{position:relative}
 footer{background:var(--navy);color:var(--on-navy-soft);font-size:15px;padding:28px 0 calc(28px + var(--bar-h) + env(safe-area-inset-bottom))}
 footer strong{color:#fff}
 footer .demo{margin-top:14px;font-size:13px;opacity:.85}
-footer a{color:#fff}
+footer a{color:#fff;display:inline-block;padding:12px 0}
 
 /* Sticky thumb bar (phones) */
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);box-shadow:0 -8px 24px -12px rgba(38,33,94,.45);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
@@ -437,7 +437,7 @@ var Loop = (function(){
 /* ===== SMS links: pre-filled message per service ===== */
 (function(){
   document.querySelectorAll('[data-sms]').forEach(function(a){
-    var body = 'Hi Sean! I found Above All online and I\'d like ' + (a.dataset.sms.indexOf('a free') === 0 ? '' : 'a free estimate for ') + a.dataset.sms + '\nAddress / town: \nBest time to reach me: ';
+    var body = 'Hi Sean! I found Above All online and I\'d like ' + (a.dataset.sms.indexOf('a free') === 0 ? '' : 'a free estimate for ') + a.dataset.sms + (/:$/.test(a.dataset.sms) ? ' ' : '.') + '\nAddress / town: \nBest time to reach me: ';
     a.href = 'sms:' + CFG.PHONE + '?&body=' + encodeURIComponent(body);
   });
 })();
