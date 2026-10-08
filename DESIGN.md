@@ -268,3 +268,7 @@ A 4:3 framed slider. The after image clips at `--pos`, the divider is a 4px whit
 | Siding / mildew colours | `build()` in the wash panel IIFE |
 | Shrink-film gradient and sheen | `.wrapfilm` in CSS; idle drift in the shrink-film IIFE |
 | Phone number, business name | `CFG.PHONE`, `CFG.BUSINESS`, plus the `tel:` / `sms:` hrefs in the markup |
+
+
+## Update: hero is the wall (2026-10-08)
+Header + hero + first seam sit inside `.wall` (siding as a CSS repeating gradient, 22px boards). Two canvases cover it, both `pointer-events:none`: `.grime` (low-res, CSS-scaled, `mix-blend-mode:multiply`, so the grime darkens the text and buttons under it rather than hiding them) and `.fx` (jet, mist and droplets at device resolution). The seam sits above both (z-index 5). Mouse: press and drag to spray; hover only pushes droplets. Touch: the finger sprays. Grime darkness for the wall is the `overlay` lift factors in `build()`; the wall jet is 1.4x `CFG.JET_RADIUS` on desktop.
