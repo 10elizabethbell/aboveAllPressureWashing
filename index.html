@@ -15,6 +15,7 @@
   --ink-soft:#4a4775;
   --sky:#4aa3dc;           /* logo water swoosh */
   --sky-2:#8fcdf0;
+  --sky-ink:#2a7fbf;        /* sky on light grounds (3:1+) */
   --mist:#eef5fb;          /* clean-siding light ground */
   --mist-2:#dfeaf4;
   --white:#fff;
@@ -60,11 +61,11 @@ p{margin:0}
 .hero{position:relative;background:var(--mist)}
 .hero-copy{padding:22px 16px 22px}
 .hero h1{font-size:clamp(2.55rem,11.2vw,5.6rem);color:var(--navy)}
-.hero h1 span{color:var(--sky)}
+.hero h1 span{color:var(--sky-ink)}
 .pitch{margin-top:14px;font-size:clamp(16px,4.4vw,20px);color:var(--ink-soft);max-width:34ch}
 .meta{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;font-weight:700;color:var(--ink-soft);list-style:none;padding:0}
 .meta li{display:flex;align-items:center;gap:6px}
-.meta svg{width:16px;height:16px;color:var(--sky)}
+.meta svg{width:16px;height:16px;color:var(--sky-ink)}
 .actions{margin-top:20px;display:grid;gap:10px}
 
 /* ===== Wash panel (signature) ===== */
@@ -111,8 +112,6 @@ section{position:relative}
 .wrapfilm{--mx:70%;--my:20%;position:relative;margin-top:30px;border-radius:24px;padding:26px 20px 22px;color:var(--ink);overflow:hidden;
   background:
     radial-gradient(260px 200px at var(--mx) var(--my),rgba(255,255,255,.95),rgba(255,255,255,0) 70%),
-    repeating-linear-gradient(118deg,rgba(255,255,255,0) 0 34px,rgba(255,255,255,.35) 36px,rgba(255,255,255,0) 40px 78px),
-    repeating-linear-gradient(64deg,rgba(38,33,94,0) 0 52px,rgba(38,33,94,.06) 54px,rgba(38,33,94,0) 58px 120px),
     linear-gradient(160deg,#dcecf8,#b9d9ef 55%,#cfe5f4);
   box-shadow:0 18px 40px -18px rgba(0,0,0,.5);touch-action:pan-y}
 .wrapfilm h3{font-size:clamp(1.7rem,7.4vw,2.6rem);color:var(--navy)}
@@ -120,12 +119,11 @@ section{position:relative}
 .wrapfilm .items{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .wrapfilm .items li{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.7);font-weight:800;font-size:14px;color:var(--navy)}
 .wrapfilm .btn{margin-top:20px}
-.season{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;padding:6px 12px;border-radius:999px;background:var(--navy);color:#fff;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
-.season svg{width:16px;height:16px}
 
 /* Proof */
 .proof h2{color:var(--navy)}
-.ba{margin-top:24px}
+.slider{margin-top:22px}
+.pair{margin-top:22px}
 .ba-label{font-weight:800;font-size:15px;color:var(--navy);margin:22px 0 10px;text-transform:uppercase;letter-spacing:.04em}
 .slider{position:relative;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:6px solid #fff;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%;background:var(--mist-2)}
 .slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;pointer-events:none;-webkit-user-drag:none}
@@ -168,11 +166,11 @@ section{position:relative}
 .promise-src{margin-top:12px;font-size:14px;color:var(--on-navy-soft)}
 
 /* Close */
-.close{text-align:center}
+.close{text-align:center;padding-bottom:0}
 .close .logo{width:min(320px,80%);height:auto;margin:0 auto}
 .close h2{margin-top:18px;color:var(--navy);font-size:clamp(1.7rem,7.4vw,3rem)}
 .close p{margin:12px auto 0;max-width:40ch;color:var(--ink-soft)}
-.close .actions{max-width:600px;justify-content:center;margin:22px auto 0}
+.close .actions{max-width:600px;margin:22px auto 0}
 .close .email{display:inline-block;margin-top:16px;font-weight:800;color:var(--navy);min-height:44px;line-height:44px}
 .close-wash{height:120px;margin-top:34px}
 
@@ -204,6 +202,7 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .top .wrap{height:84px}
   .top img{height:62px}
   .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);max-width:1440px;margin:0 auto}
+  .pitch{max-width:none}
   .hero-copy{padding:64px 40px 72px max(40px,calc((100vw - 1440px)/2 + 40px));align-self:center}
   .wash{height:auto;min-height:560px}
   .wash::before{inset:0 auto 0 0;width:8px;height:auto;box-shadow:3px 0 6px rgba(38,33,94,.18)}
@@ -216,6 +215,7 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .area-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
   .promise{margin-top:0}
   .close-wash{height:180px}
+  .close .actions{justify-content:center}
   footer{padding-bottom:28px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -249,7 +249,7 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
     </ul>
     <div class="actions" id="heroActions">
       <a class="btn btn-primary" href="tel:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span class="mob">Call for a free estimate</span><span class="desk">Call 732-600-3447</span></a>
-      <a class="btn btn-secondary" data-sms="a free estimate" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>Text Sean a photo</a>
+      <a class="btn btn-secondary" data-sms="a free estimate" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Text Sean a photo<span class="desk">&nbsp;· 732-600-3447</span></span></a>
     </div>
   </div>
   <div class="wash" data-wash="hero" role="img" aria-label="Interactive demo: drag across the dirty siding to pressure-wash it clean">
@@ -278,17 +278,16 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
         <li class="svc"><a data-sms="gutter cleaning" href="sms:+17326003447">
           <div><h3>Gutter cleaning</h3>
-            <p>Clogged gutters overflow in heavy rain and send water into your foundation. Most homes need them cleaned twice a year.</p>
+            <p>Clogged gutters overflow in heavy rain, and that water sits and seeps around your foundation. Most homes need them cleaned twice a year.</p>
             <ul class="tags"><li>Unclogging</li><li>Seasonal cleaning</li></ul></div>
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
       </ul>
     </div>
     <div class="wrapfilm" id="wrapfilm">
-      <span class="season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1L19.1 4.9"/></svg>Shrink-wrap season</span>
       <h3>Protect your investment this off season.</h3>
       <p>Keep it clean, dry and protected all winter long. Shrink wrap makes a strong, weather-resistant barrier against rain, snow, dirt and dust. Sean handles it from start to finish.</p>
       <ul class="items"><li>Boats &amp; watercraft</li><li>Outdoor furniture</li><li>Grills</li><li>Hot tubs</li><li>Equipment</li><li>Patio equipment</li></ul>
-      <a class="btn btn-primary" data-sms="shrink wrapping. What I need wrapped:" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>Text to book shrink wrap</a>
+      <a class="btn btn-primary" data-sms="shrink wrapping. What I need wrapped:" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Text to book shrink wrap<span class="desk">&nbsp;· 732-600-3447</span></span></a>
     </div>
   </div>
 </section>
@@ -300,20 +299,18 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
     <div class="proof-grid">
       <div>
         <h2 id="proof-h">Before. After.</h2>
-        <p class="lede">Real jobs from Above All. Drag the jet across the pavers.</p>
-        <p class="ba-label">Brick pavers</p>
+        <p class="lede">From Above All’s project gallery. Drag the jet across the pavers.</p>
         <div class="slider" id="slider" role="slider" tabindex="0" aria-label="Before and after: brick pavers" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after">
           <img data-src="img-pav-b" alt="Pavers before washing: dark, weedy joints" width="600" height="195" draggable="false">
           <img class="after" data-src="img-pav-a" alt="Pavers after washing: bright red brick, clean joints" width="600" height="195" draggable="false">
-          <span class="tag b">Before</span><span class="tag a">After</span>
+          <span class="tag b">Before · pavers</span><span class="tag a">After</span>
           <span class="jet"></span>
           <span class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
         </div>
       </div>
       <div>
-        <p class="ba-label">Vinyl siding</p>
         <div class="pair">
-          <figure><img data-src="img-sid-b" alt="Siding before: green mildew film" width="278" height="404" draggable="false"><span class="tag b">Before</span></figure>
+          <figure><img data-src="img-sid-b" alt="Siding before: green mildew film" width="278" height="404" draggable="false"><span class="tag b">Before · siding</span></figure>
           <figure><img data-src="img-sid-a" alt="Siding after: clean pale blue siding" width="278" height="404" draggable="false"><span class="tag a">After</span></figure>
         </div>
       </div>
@@ -322,11 +319,11 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
     <div class="reviews">
       <h3>What clients say about Sean</h3>
       <ul class="quotes" aria-label="Customer reviews">
-        <li><blockquote>“I was very happy with how quickly Sean came when I called! Our gutters were overdue to be cleaned and the siding turned green. I couldn’t believe that he was able to get all the green off the siding! His prices were good and his work was thorough.”</blockquote><cite>Sharon L<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
-        <li><blockquote>“The owner Sean was awesome. He showed up very quickly for an estimate and had our house looking amazing. We plan on reusing him on a regular power wash and next time the gutters!”</blockquote><cite>Adriana H<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
+        <li><blockquote>“I was very happy with how quickly Sean came when I called! Our gutters were overdue to be cleaned and the siding turned green. I couldn’t believe that he was able to get all the green off the siding! His prices were good and his work was thorough…”</blockquote><cite>Sharon L<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
+        <li><blockquote>“The owner Sean was awesome. He showed up very quickly for an estimate and had our house looking amazing. We plan on reusing him on a regular power wash and next time the gutters!…”</blockquote><cite>Adriana H<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
         <li><blockquote>“Sean is excellent. His workmanship was perfect. Did a great job as well as cleaned up after. So good I’m sending him to do my Mother’s house and walkways. Don’t hesitate to use him.”</blockquote><cite>Jamie M<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
-        <li><blockquote>“Sean answered my call politely and actually showed up to give us an estimate. His pricing was fair and we hired him. He showed up on time and completed the job in a timely manner! His work was excellent!”</blockquote><cite>Tracey Z<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
-        <li><blockquote>“The owner Sean was very polite and professional. All work was completed in a timely manner as well as looking great! Would definitely recommend his services to everyone I know.”</blockquote><cite>Caitlin G<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
+        <li><blockquote>“…Sean answered my call politely and actually showed up to give us an estimate. His pricing was fair and we hired him. He showed up on time and completed the job in a timely manner! His work was excellent!…”</blockquote><cite>Tracey Z<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
+        <li><blockquote>“…The owner Sean was very polite and professional. All work was completed in a timely manner as well as looking great! Would definitely recommend his services to everyone I know.”</blockquote><cite>Caitlin G<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
       </ul>
       <p class="swipe-note mob">Swipe for more</p>
     </div>
@@ -371,7 +368,7 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
     <p>One family-owned company, one name you can trust. Questions? Call anytime.</p>
     <div class="actions" id="closeActions">
       <a class="btn btn-primary" href="tel:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call 732-600-3447</a>
-      <a class="btn btn-secondary" data-sms="a free estimate" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>Text Sean<span class="desk">&nbsp;· 732-600-3447</span></a>
+      <a class="btn btn-secondary" data-sms="a free estimate" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Text Sean<span class="desk">&nbsp;· 732-600-3447</span></span></a>
     </div>
     <a class="email" href="mailto:info@AboveAllTeam.com?subject=Free%20estimate%20request">info@AboveAllTeam.com</a>
   </div>
@@ -480,7 +477,7 @@ var Loop = (function(){
 
   function Panel(el, idx){
     var cv = el.querySelector('canvas'), ctx = cv.getContext('2d'), score = el.querySelector('.wash-score');
-    var W, H, dpr, RES = 3, gw, gh, siding, grimeTex, mask, mctx, layer, lctx, wet, wctx, regrowTex, sprites = [];
+    var W, H, dpr, RES = 2, lines, gw, gh, siding, grimeTex, mask, mctx, layer, lctx, wet, wctx, regrowTex, sprites = [];
     var jet = { x: 0, y: 0, px: 0, py: 0 }, user = { active: false, t: -1e9, x: 0, y: 0 };
     var drops = [], maxDrops = PHONE ? CFG.DROPS_PHONE : CFG.DROPS_DESK, seed = 7 + idx * 101, phase = idx * 2.1;
     var frameN = 0, cleanPct = 0;
@@ -499,24 +496,29 @@ var Loop = (function(){
         s.fillStyle = g; s.fillRect(0, y, siding.width, B);
         s.fillStyle = 'rgba(38,33,94,.22)'; s.fillRect(0, y + B - 1.5 * dpr, siding.width, 1.5 * dpr);
       }
+      lines = document.createElement('canvas'); lines.width = cv.width; lines.height = cv.height;
+      var lc = lines.getContext('2d'); lc.fillStyle = 'rgba(30,34,60,.28)';
+      for (y = B - 1.5 * dpr; y < lines.height; y += B) lc.fillRect(0, y, lines.width, 1.5 * dpr);
       // grime texture: mildew greens and browns, rain streaks
       var n1 = noise2(gw, gh, 16, seed), n2 = noise2(gw, gh, 2, seed + 3), n3 = noise2(gw, gh, 30, seed + 9);
       grimeTex = document.createElement('canvas'); grimeTex.width = gw; grimeTex.height = gh;
       var gx = grimeTex.getContext('2d'), id = gx.createImageData(gw, gh), d = id.data;
-      var streak = new Float32Array(gw); for (var sx = 0; sx < gw; sx++) streak[sx] = Math.max(0, Math.sin(sx * 0.7 + seed) * Math.sin(sx * 0.13 + 2) - .35) * 1.8;
+      var streak = noise2(gw, 1, 24 / RES, seed + 5); for (var sx = 0; sx < gw; sx++) streak[sx] = Math.max(0, streak[sx] - .55) * 2.2;   // irregular rain streaks
       for (var i = 0; i < gw * gh; i++) {
         var px = i % gw, py = (i / gw) | 0, a = n1[i], b = n2[i], c = n3[i];
         var t = Math.min(1, Math.max(0, a * .7 + b * .3));
         var R = 84 + (118 - 84) * c + b * 14, G = 98 + (100 - 98) * c + b * 10, Bc = 56 + (62 - 56) * c + b * 6;
         var dark = streak[px] * (py / gh); R -= 30 * dark; G -= 26 * dark; Bc -= 18 * dark;
         if (b > .86) { R -= 14; G -= 12; Bc -= 8; }   // speckle
-        d[i * 4] = R; d[i * 4 + 1] = G; d[i * 4 + 2] = Bc; d[i * 4 + 3] = 255 * Math.min(1, 0.5 + 0.42 * t + 0.25 * dark);
+        var lap = ((py * RES) % 22) / 22, under = lap > .62 ? (lap - .62) / .38 : 0;   // mildew collects under each board lip
+        R -= 26 * under; G -= 14 * under; Bc -= 16 * under;
+        d[i * 4] = R - 6; d[i * 4 + 1] = G + 6; d[i * 4 + 2] = Bc + 4; d[i * 4 + 3] = 255 * Math.min(1, 0.42 + 0.4 * t + 0.25 * dark + 0.3 * under);
       }
       gx.putImageData(id, 0, 0);
       // regrow texture: blotchy alpha so grime returns in patches
       regrowTex = document.createElement('canvas'); regrowTex.width = gw; regrowTex.height = gh;
       var rx = regrowTex.getContext('2d'), rd = rx.createImageData(gw, gh);
-      for (i = 0; i < gw * gh; i++) { rd.data[i * 4 + 3] = 255 * Math.min(1, Math.max(0, (n1[i] - .25) * 1.8)); }
+      for (i = 0; i < gw * gh; i++) { rd.data[i * 4 + 3] = 255 * Math.min(1, Math.max(.3, (n1[i] - .25) * 1.8)); }
       rx.putImageData(rd, 0, 0);
       mask = document.createElement('canvas'); mask.width = gw; mask.height = gh; mctx = mask.getContext('2d');
       mctx.fillStyle = '#000'; mctx.fillRect(0, 0, gw, gh);
@@ -524,6 +526,9 @@ var Loop = (function(){
       wet = document.createElement('canvas'); wet.width = gw; wet.height = gh; wctx = wet.getContext('2d');
       sprites = [makeDropSprite(1.6, dpr), makeDropSprite(2.4, dpr), makeDropSprite(3.4, dpr)];
       jet.x = jet.px = W * .3; jet.y = jet.py = H * .5;
+      if (el.dataset.wash === 'close') { // the payoff: nearly clean, one band left for the wand
+        mctx.globalCompositeOperation = 'destination-out'; mctx.fillRect(0, 0, gw, gh * .58); mctx.globalCompositeOperation = 'source-over';
+      }
       if (REDUCED) { // still frame: one clean stripe
         for (var k = 0; k <= 40; k++) washAt(W * (.08 + .84 * k / 40), H * (.45 + .12 * Math.sin(k * .3)), 1);
         render(0);
@@ -534,11 +539,11 @@ var Loop = (function(){
       var r = CFG.JET_RADIUS * (PHONE ? .85 : 1) / RES, cx = x / RES, cy = y / RES;
       mctx.globalCompositeOperation = 'destination-out';
       var g = mctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      g.addColorStop(0, 'rgba(0,0,0,' + (.95 * k) + ')'); g.addColorStop(.72, 'rgba(0,0,0,' + (.8 * k) + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
-      mctx.fillStyle = g; mctx.beginPath(); mctx.ellipse(cx, cy, r * 1.25, r, 0, 0, 6.283); mctx.fill();
+      g.addColorStop(0, 'rgba(0,0,0,' + (.95 * k) + ')'); g.addColorStop(.85, 'rgba(0,0,0,' + (.95 * k) + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      mctx.fillStyle = g; mctx.beginPath(); mctx.ellipse(cx, cy, r * 1.15, r * .8, 0, 0, 6.283); mctx.fill();
       mctx.globalCompositeOperation = 'source-over';
       var w = wctx.createRadialGradient(cx, cy, 0, cx, cy, r * 1.3);
-      w.addColorStop(0, 'rgba(255,255,255,.8)'); w.addColorStop(1, 'rgba(255,255,255,0)');
+      w.addColorStop(0, 'rgba(110,150,190,.9)'); w.addColorStop(1, 'rgba(110,150,190,0)');
       wctx.fillStyle = w; wctx.beginPath(); wctx.arc(cx, cy, r * 1.3, 0, 6.283); wctx.fill();
     }
 
@@ -559,16 +564,17 @@ var Loop = (function(){
       lctx.globalCompositeOperation = 'source-over';
       ctx.imageSmoothingEnabled = true;
       ctx.drawImage(layer, 0, 0, gw, gh, 0, 0, cv.width, cv.height);
-      ctx.globalAlpha = .08; ctx.drawImage(wet, 0, 0, gw, gh, 0, 0, cv.width, cv.height); ctx.globalAlpha = 1;
+      ctx.globalAlpha = .3; ctx.drawImage(lines, 0, 0); ctx.globalAlpha = .2; ctx.drawImage(wet, 0, 0, gw, gh, 0, 0, cv.width, cv.height); ctx.globalAlpha = 1;
       if (REDUCED) return;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       // the jet: a tapering stream from the wand above-right to the impact point
       var ox = jet.x + W * .22 + 40, oy = -30, dx = jet.x - ox, dy = jet.y - oy, L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L;
       var g = ctx.createLinearGradient(ox, oy, jet.x, jet.y);
-      g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.55, 'rgba(255,255,255,.35)'); g.addColorStop(1, 'rgba(255,255,255,.8)');
+      g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.6, 'rgba(255,255,255,.3)'); g.addColorStop(1, 'rgba(255,255,255,.75)');
       ctx.fillStyle = g; ctx.beginPath();
-      ctx.moveTo(ox + nx * 1, oy + ny * 1); ctx.lineTo(jet.x + nx * 3.5, jet.y + ny * 3.5);
-      ctx.lineTo(jet.x - nx * 3.5, jet.y - ny * 3.5); ctx.lineTo(ox - nx * 1, oy - ny * 1); ctx.fill();
+      var fan = CFG.JET_RADIUS * (PHONE ? .85 : 1) * .55;
+      ctx.moveTo(ox + nx * 1, oy + ny * 1); ctx.lineTo(jet.x + nx * fan, jet.y + ny * fan * .35);
+      ctx.lineTo(jet.x - nx * fan, jet.y - ny * fan * .35); ctx.lineTo(ox - nx * 1, oy - ny * 1); ctx.fill();
       // impact mist, breathing
       var mr = 15 + 4 * Math.sin(t * 9) + 3 * Math.sin(t * 13.7 + phase);
       var m = ctx.createRadialGradient(jet.x, jet.y, 0, jet.x, jet.y, mr * 1.6);
@@ -597,11 +603,11 @@ var Loop = (function(){
       var vx = (jet.x - jet.px) / dt, vy = (jet.y - jet.py) / dt;
       // wash along the path so fast moves don't leave gaps
       var dist = Math.hypot(jet.x - jet.px, jet.y - jet.py), n = Math.max(1, Math.ceil(dist / 6));
-      for (var k = 1; k <= n; k++) washAt(jet.px + (jet.x - jet.px) * k / n, jet.py + (jet.y - jet.py) * k / n, mine ? .55 : .35);
+      for (var k = 1; k <= n; k++) washAt(jet.px + (jet.x - jet.px) * k / n, jet.py + (jet.y - jet.py) * k / n, mine ? .95 : .5);
       emit(PHONE ? 2 : 4, vx, vy);
       // grime creeps back in patches, wet sheen dries
       if (frameN % 2 === 0) {
-        mctx.globalAlpha = CFG.REGROW * 2; mctx.drawImage(regrowTex, 0, 0); mctx.globalAlpha = 1;
+        mctx.globalAlpha = (el.dataset.wash === 'close' ? 0 : CFG.REGROW) * 2; mctx.drawImage(regrowTex, 0, 0); mctx.globalAlpha = 1;
         wctx.globalCompositeOperation = 'destination-out'; wctx.fillStyle = 'rgba(0,0,0,.035)'; wctx.fillRect(0, 0, gw, gh); wctx.globalCompositeOperation = 'source-over';
       }
       // droplets: gravity, finger pushes them along
