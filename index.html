@@ -163,10 +163,8 @@ section{position:relative}
 /* Area + promise */
 .area-big{font-size:clamp(2.2rem,10vw,4.4rem);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
 .area-big span{color:var(--sky-2)}
-.promise{margin-top:30px;list-style:none;padding:0;display:grid;gap:2px}
-.promise li{font-size:clamp(1.8rem,8vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;color:#fff}
-.promise li::after{content:".";color:var(--sky)}
-.promise-src{margin-top:12px;font-size:14px;color:var(--on-navy-soft)}
+.area-line{margin-top:30px;font-size:clamp(1.8rem,8vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;color:#fff;text-wrap:balance}
+.area-line span{color:var(--sky)}
 
 /* Close */
 .close{text-align:center}
@@ -210,7 +208,7 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .quotes li{flex-basis:31.5%}
   .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
   .area-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
-  .promise{margin-top:0}
+  .area-line{margin-top:0}
   .close .actions{justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -236,8 +234,8 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
 
 <section class="hero" aria-labelledby="h1">
   <div class="hero-copy">
-    <h1 id="h1">Like a whole <span>new</span> home.</h1>
-    <p class="pitch">Pressure washing, soft washing, gutters and shrink wrapping across Ocean &amp; Monmouth County.</p>
+    <h1 id="h1">Detailed<span>.</span> Organized<span>.</span> Honest<span>.</span> Fast<span>.</span></h1>
+    <p class="pitch">My promise, every job.</p>
     <ul class="meta">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Family owned</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Forked River, NJ</li>
@@ -359,8 +357,7 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
       <p class="lede">I’m based in Forked River, NJ, and I’ve served Ocean and Monmouth counties since 2019.</p>
     </div>
     <div>
-      <ul class="promise" aria-label="My promise"><li>Detailed</li><li>Organized</li><li>Honest</li><li>Fast</li></ul>
-      <p class="promise-src">My promise, every job.</p>
+      <p class="area-line">Like a whole <span>new</span> home.</p>
     </div>
   </div>
 </section>

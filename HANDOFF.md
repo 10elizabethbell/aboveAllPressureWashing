@@ -13,6 +13,8 @@
 
 - **Phone wand, matched to T&J (2026-10-09, Ellie):** `html{overscroll-behavior-y:none}` (no rubber-band or pull-to-refresh anywhere on the page), so a downward drag at the top of the page moves the wand instead of the page. The finger's spot on the wall is re-read every frame, so the wand stays under a held finger and keeps washing while the page scrolls. Upward drags still scroll the page, same as T&J. A press-and-hold lock would stop that if wanted.
 
+- **Headline swap (2026-10-09, Ellie):** the hero headline is now "Detailed. Organized. Honest. Fast." with "My promise, every job." under it. The services line ("Pressure washing, soft washing, gutters and shrink wrapping across Ocean & Monmouth County.") was removed. "Like a whole new home." moved to the area section, where the promise list was.
+
 ## Assumptions I made
 - **Voice (Ellie's rule, 2026-10-08):** every line on the page speaks in first person, as Sean ("I", "me", "my"): "Text me", "My work.", "Words from my clients", "I come out…", "My promise, every job." Customer testimonials stay verbatim (they're quotes), and so do the pre-filled text messages (the customer writes those to Sean).
 - **Muse missed assets that were on their site.** aboveallprowash.com has the logo (`/images/logo.png`), an email (`info@AboveAllTeam.com`, in their header) and two before/after "projects" images. I used all of them. The before/after photos are assumed to be Sean's own work because they're published as his projects.
