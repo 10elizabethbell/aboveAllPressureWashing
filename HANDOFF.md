@@ -18,6 +18,8 @@
 - **Siding photo sharpened (2026-10-09):** their site only has the siding pair at about 300x404 per side, so it was blurry when stretched to the slider. Both halves were upscaled 3x with an AI super-resolution model (OpenCV EDSR) from the original JPEG, then saved as WebP (q72). The page is about 100KB heavier for it. A full-size original from Sean would be better still.
 - **Favicon (2026-10-09):** the house-and-wand mark cropped from the logo (the full wordmark is unreadable at tab size), plus a 180px home-screen icon on white.
 
+- **Impeccable pass, all modes (2026-10-09, Ellie via another session):** a few words were fixed: "À la carte" and "off-season". Facebook link text unchanged; screen readers also hear "(opens my Facebook)". The closing heading is now "Questions? Call me anytime." The logo above it already shows the business name, which used to be repeated as the heading. On desktop, all five reviews show in a 3+2 grid instead of a sideways scroller, and the services heading stays in view while you scroll its list. The slider does one gentle back-and-forth sweep the first time it comes into view, so people see it moves. It stops the moment someone touches it and is skipped under reduced motion. Photos fade in instead of popping, and never show a broken-image icon while loading. Paragraphs avoid one-word last lines. The slider takes Home/End keys, and the review row can be reached by keyboard. Footer lines stack on phones. Kept on purpose: the jet still crosses the hero copy (it's the signature), and so do the system fonts and Ellie's "Click to see more of my work." wording.
+
 ## Assumptions I made
 - **Voice (Ellie's rule, 2026-10-08):** every line on the page speaks in first person, as Sean ("I", "me", "my"): "Text me", "My work.", "Words from my clients", "I come out…", "My promise, every job." Customer testimonials stay verbatim (they're quotes), and so do the pre-filled text messages (the customer writes those to Sean).
 - **Muse missed assets that were on their site.** aboveallprowash.com has the logo (`/images/logo.png`), an email (`info@AboveAllTeam.com`, in their header) and two before/after "projects" images. I used all of them. The before/after photos are assumed to be Sean's own work because they're published as his projects.
@@ -40,7 +42,7 @@
 - Only two real before/after pairs. More would fill the proof section and could go in under each service row on phones.
 
 ## Questions for the owner
-- Do you take texts at 732-600-3447? (Every service row and the sticky bar text you.)
+- Do you take texts at 732-600-3447? (Every service row texts you.)
 - Real shrink-wrap photos (boats, hot tubs, patio sets)? And more before/afters, especially roofs, driveways and green siding?
 - Hours? Do you give estimates from a photo by text?
 - Are painting and vinyl flooring still offered?

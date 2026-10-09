@@ -35,7 +35,7 @@ a{color:inherit;text-underline-offset:.2em}
 ::selection{background:var(--sky-2);color:var(--ink)}
 :focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
 h1,h2,h3{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.95;margin:0;text-wrap:balance}
-p{margin:0}
+p{margin:0;text-wrap:pretty}
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 16px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -120,6 +120,7 @@ section{position:relative}
 
 /* Proof */
 .proof h2{color:var(--navy)}
+.proof h2 span{color:var(--sky-ink)}
 .slider{margin-top:22px}
 .slider{position:relative;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:6px solid #fff;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%;background:var(--mist-2)}
 .slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;pointer-events:none;-webkit-user-drag:none}
@@ -138,7 +139,8 @@ section{position:relative}
 .gallery li{position:relative;aspect-ratio:1;border-radius:var(--radius);overflow:hidden;border:6px solid #fff;box-shadow:var(--shadow);background:var(--mist-2)}
 .gallery li.wide{grid-column:span 2;aspect-ratio:16/9}
 .gallery img{width:100%;height:100%;object-fit:cover;display:block}
-.gallery .tag{font-size:11px}
+.slider img,.gallery img{transition:opacity .5s ease-out}
+img[data-src],img:not([src]){opacity:0}
 @media (max-width:759px){.gallery li:not(.wide) .pre{display:none}}   /* small phone tiles: just the item name */
 .fb-link{margin-top:18px;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px 10px 12px;border-radius:999px;background:#fff;color:var(--navy);font-weight:800;font-size:15px;text-decoration:none;box-shadow:var(--shadow);-webkit-tap-highlight-color:transparent}
 .fb-link svg{width:20px;height:20px;flex:none;color:var(--sky-ink)}
@@ -150,12 +152,14 @@ section{position:relative}
 .reviews h3{font-size:clamp(1.5rem,6.4vw,2.2rem);color:var(--navy)}
 .quotes{margin:18px -16px 0;padding:4px 16px 14px;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;list-style:none;scrollbar-width:thin;scrollbar-color:var(--sky) transparent;overscroll-behavior-x:contain}
 .quotes li{flex:0 0 86%;scroll-snap-align:start;background:#fff;border-radius:var(--radius);padding:20px 20px 18px;box-shadow:0 8px 24px -16px rgba(38,33,94,.45);display:flex;flex-direction:column;gap:14px}
-.quotes blockquote{margin:0;font-size:17px;line-height:1.5}
+.quotes blockquote{margin:0;font-size:17px;line-height:1.5;hanging-punctuation:first;text-wrap:pretty}
 .quotes cite{font-style:normal;font-weight:800;color:var(--navy);margin-top:auto}
 .quotes .src{display:block;font-weight:600;font-size:13px;color:var(--ink-soft)}
 .swipe-note{font-size:14px;color:var(--ink-soft);margin-top:4px}
 
 /* How it works: one hose, three stops */
+.how{padding-top:8px}
+.how h2{color:var(--navy)}
 .steps{list-style:none;margin:26px 0 0;padding:0;position:relative}
 .steps::before{content:"";position:absolute;left:21px;top:22px;bottom:30px;width:6px;border-radius:6px;background:var(--sky)}
 .steps li{position:relative;padding:0 0 26px 66px}
@@ -174,6 +178,7 @@ section{position:relative}
 .close{text-align:center}
 .close .logo{width:min(320px,80%);height:auto;margin:0 auto}
 .close h2{margin-top:18px;color:var(--navy);font-size:clamp(1.7rem,7.4vw,3rem)}
+.close h2 span{color:var(--sky-ink)}
 .close p{margin:12px auto 0;max-width:40ch;color:var(--ink-soft)}
 .close .actions{max-width:600px;margin:22px auto 0}
 
@@ -181,6 +186,9 @@ section{position:relative}
 footer{background:var(--navy);color:var(--on-navy-soft);font-size:15px;padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
 footer strong{color:#fff}
 footer a{color:#fff;display:inline-block;padding:12px 0}
+footer .dot{display:none}
+footer p > span,footer p > a{display:block}
+footer p > a{width:max-content}
 
 /* ===== Desktop ===== */
 @media (min-width:760px){
@@ -204,12 +212,16 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .wall .wash-score{right:max(32px,calc((100vw - 1180px)/2 + 32px));bottom:calc(var(--seam-h) + 70px)}
   .svc-group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:56px;align-items:start}
   .svc-group .svc-list{margin-top:6px}
+  .svc-group > div:first-child{position:sticky;top:32px}
   .svc-group + .svc-group{margin-top:80px}
   .work-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:16px;align-items:stretch}
   .work-grid .slider.tall{aspect-ratio:auto;height:100%}
   .gallery{gap:16px}
-  .quotes{margin:18px 0 0;padding:4px 0 14px}
-  .quotes li{flex-basis:31.5%}
+  .quotes{margin:18px 0 0;padding:4px 0 14px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));overflow:visible}
+  .quotes li{grid-column:span 2}
+  .quotes li:nth-child(n+4){grid-column:span 3}
+  footer .dot{display:inline}
+  footer p > span,footer p > a{display:inline-block}
   .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
   .area-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
   .area-line{margin-top:0}
@@ -261,7 +273,7 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
   <div class="wrap">
     <div class="svc-group">
       <div><h2 id="svc-h">Every part of your home<span>.</span></h2>
-      <p class="lede">A-la-carte pricing or a package deal, depending on what you need. Tap a service to text me about it.</p></div>
+      <p class="lede">À la carte pricing or a package deal, depending on what you need. Tap a service to text me about it.</p></div>
       <ul class="svc-list">
         <li class="svc"><a data-sms="power washing" href="sms:+17326003447">
           <div><h3>Power washing</h3>
@@ -279,7 +291,7 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
     </div>
     <div class="svc-group" aria-labelledby="wrap-h">
       <div><h2 id="wrap-h">Boats and equipment<span>.</span></h2>
-      <p class="lede">Protect your investment this off season. Shrink wrap makes a strong, weather-resistant barrier against rain, snow, dirt and dust, and I handle it from start to finish.</p></div>
+      <p class="lede">Protect your investment this off-season. Shrink wrap makes a strong, weather-resistant barrier against rain, snow, dirt and dust, and I handle it from start to finish.</p></div>
       <ul class="svc-list">
         <li class="svc"><a data-sms="shrink wrapping my boat" href="sms:+17326003447">
           <div><h3>Boats &amp; watercraft</h3>
@@ -306,27 +318,27 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
 
 <section class="sec proof" id="proof" aria-labelledby="proof-h">
   <div class="wrap">
-    <div class="proof-head"><h2 id="proof-h">My work.</h2>
+    <div class="proof-head"><h2 id="proof-h">My work<span>.</span></h2>
         <p class="lede">Drag the jet across the siding.</p></div>
     <div class="work-grid">
         <div class="slider tall" role="slider" tabindex="0" aria-label="Before and after: vinyl siding" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after">
-          <img data-src="img-sid-b" alt="Siding before: green mildew film" width="927" height="1212" draggable="false">
-          <img class="after" data-src="img-sid-a" alt="Siding after: clean pale blue siding" width="834" height="1212" draggable="false">
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img-sid-b" alt="Siding before: green mildew film" width="927" height="1212" draggable="false" decoding="async">
+          <img class="after" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img-sid-a" alt="Siding after: clean pale blue siding" width="834" height="1212" draggable="false" decoding="async">
           <span class="tag b">Before · siding</span><span class="tag a">After</span>
           <span class="jet"></span>
           <span class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
         </div>
         <ul class="gallery" aria-label="Shrink wrap jobs">
-          <li class="wide"><img data-src="img-w-lift" alt="Boat on a lift, shrink wrapped tight for winter" width="566" height="380" draggable="false"><span class="tag b"><span class="pre">Shrink wrap · </span>boat lift</span></li>
-          <li><img data-src="img-w-trailer" alt="Boat on its trailer, shrink wrapped" width="486" height="280" draggable="false"><span class="tag b"><span class="pre">Shrink wrap · </span>boat</span></li>
-          <li><img data-src="img-w-patio" alt="Patio furniture set shrink wrapped" width="480" height="280" draggable="false"><span class="tag b"><span class="pre">Shrink wrap · </span>patio set</span></li>
+          <li class="wide"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img-w-lift" alt="Boat on a lift, shrink wrapped tight for winter" width="566" height="380" draggable="false" decoding="async"><span class="tag b"><span class="pre">Shrink wrap · </span>boat lift</span></li>
+          <li><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img-w-trailer" alt="Boat on its trailer, shrink wrapped" width="486" height="280" draggable="false" decoding="async"><span class="tag b"><span class="pre">Shrink wrap · </span>boat</span></li>
+          <li><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="img-w-patio" alt="Patio furniture set shrink wrapped" width="480" height="280" draggable="false" decoding="async"><span class="tag b"><span class="pre">Shrink wrap · </span>patio set</span></li>
         </ul>
     </div>
-    <a class="fb-link" href="https://www.facebook.com/groups/717636435063715/user/61568911795774/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><span>Click to see more of my work.</span><svg class="out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="fb-link" href="https://www.facebook.com/groups/717636435063715/user/61568911795774/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><span>Click to see more of my work.<span class="sr"> (opens my Facebook)</span></span><svg class="out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 
     <div class="reviews">
       <h3>Words from my clients</h3>
-      <ul class="quotes" aria-label="Customer reviews">
+      <ul class="quotes" aria-label="Customer reviews" tabindex="0">
         <li><blockquote>“I was very happy with how quickly Sean came when I called! Our gutters were overdue to be cleaned and the siding turned green. I couldn’t believe that he was able to get all the green off the siding! His prices were good and his work was thorough…”</blockquote><cite>Sharon L<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
         <li><blockquote>“The owner Sean was awesome. He showed up very quickly for an estimate and had our house looking amazing. We plan on reusing him on a regular power wash and next time the gutters!…”</blockquote><cite>Adriana H<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
         <li><blockquote>“Sean is excellent. His workmanship was perfect. Did a great job as well as cleaned up after. So good I’m sending him to do my Mother’s house and walkways. Don’t hesitate to use him.”</blockquote><cite>Jamie M<span class="src">Testimonial on aboveallprowash.com</span></cite></li>
@@ -338,10 +350,10 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
   </div>
 </section>
 
-<section class="sec" id="how" aria-labelledby="how-h" style="padding-top:8px">
+<section class="sec how" id="how" aria-labelledby="how-h">
   <div class="wrap how-grid">
     <div>
-      <h2 id="how-h" style="color:var(--navy)">How a job goes</h2>
+      <h2 id="how-h">How a job goes</h2>
       <p class="lede">I get it right the first time, every time. That’s the whole idea.</p>
     </div>
     <ol class="steps">
@@ -370,9 +382,9 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
 
 <section class="sec close" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <img class="logo" id="logo2" alt="" width="420" height="182">
-    <h2 id="close-h">Above All Pressure Washing &amp; Shrink Wrapping</h2>
-    <p>One family-owned company, one name you can trust. Questions? Call me anytime.</p>
+    <img class="logo" id="logo2" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Above All Pressure Washing &amp; Shrink Wrapping" width="420" height="182">
+    <h2 id="close-h">Questions? Call me anytime<span>.</span></h2>
+    <p>One family-owned company, one name you can trust.</p>
     <div class="actions" id="closeActions">
       <a class="btn btn-primary" href="tel:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call 732-600-3447</a>
       <a class="btn btn-secondary" data-sms="a free estimate" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Text me<span class="desk">&nbsp;· 732-600-3447</span></span></a>
@@ -383,8 +395,8 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
 
 <footer>
   <div class="wrap">
-    <p><strong>Above All Pressure Washing &amp; Shrink Wrapping</strong> · Forked River, NJ</p>
-    <p><a href="tel:+17326003447">732-600-3447</a> · <a href="mailto:info@AboveAllTeam.com">info@AboveAllTeam.com</a></p>
+    <p><strong>Above All Pressure Washing &amp; Shrink Wrapping</strong><span class="dot"> · </span><span>Forked River, NJ</span></p>
+    <p><a href="tel:+17326003447">732-600-3447</a><span class="dot"> · </span><a href="mailto:info@AboveAllTeam.com">info@AboveAllTeam.com</a></p>
   </div>
 </footer>
 
@@ -709,7 +721,16 @@ document.querySelectorAll('.slider').forEach(function(s){
     if (!side && Math.abs(t.clientX - t0.x) > 8 && Math.abs(t.clientX - t0.x) > Math.abs(t.clientY - t0.y)) side = true;
     if (side) at(t.clientX); }, { passive: true });
   s.addEventListener('touchend', function(){ if (t0 && !side) {} t0 = null; }, { passive: true });
-  s.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') { set(pos - 5); e.preventDefault(); } if (e.key === 'ArrowRight') { set(pos + 5); e.preventDefault(); } });
+  var demo = !REDUCED && 'IntersectionObserver' in window, touched = false;
+  ['pointerdown', 'touchstart', 'keydown'].forEach(function(ev){ s.addEventListener(ev, function(){ touched = true; }, { passive: true }); });
+  if (demo) new IntersectionObserver(function(es, io){
+    if (!es[0].isIntersecting) return; io.disconnect();
+    var t0 = performance.now() + 400;
+    (function tick(now){ if (touched) return; var k = Math.max(0, (now - t0) / 1600); if (k >= 1) { set(50); return; }
+      set(50 - 22 * Math.sin(k * Math.PI * 2) * (1 - k * .3)); requestAnimationFrame(tick); })(performance.now());
+  }, { threshold: .6 }).observe(s);
+  s.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') { set(pos - 5); e.preventDefault(); } if (e.key === 'ArrowRight') { set(pos + 5); e.preventDefault(); }
+    if (e.key === 'Home') { set(0); e.preventDefault(); } if (e.key === 'End') { set(100); e.preventDefault(); } });
 });
 
 /* ===== Lazy images from the data blocks at the end of the file ===== */
