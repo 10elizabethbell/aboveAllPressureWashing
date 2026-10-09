@@ -72,8 +72,9 @@ p{margin:0}
 /* ===== The wall (signature): header + hero are one dirty siding wall =====
    Grime is a multiply-blended canvas over everything, letters included; the jet + spray sit on a second canvas.
    Both ignore the pointer so every link and button underneath still works. */
-.wall{--seam-h:44px;position:relative;overflow:hidden;user-select:none;-webkit-user-select:none;
-  background:repeating-linear-gradient(180deg,#eef4f9 0,#dfe8f1 16px,#c9d6e3 20px,rgba(38,33,94,.3) 20px 22px)}
+.wall{--seam-h:44px;--board:40px;position:relative;overflow:hidden;user-select:none;-webkit-user-select:none;
+  /* wide lap boards with a soft shadow seam, so the lines don't cut through the copy */
+  background:repeating-linear-gradient(180deg,#eef4f9 0,#e6eef6 calc(var(--board) * .7),#d6e1ec calc(var(--board) - 2px),#c3d1df calc(var(--board) - 1px),#c3d1df var(--board))}
 .wall > canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block}
 .wall .grime{z-index:2;mix-blend-mode:multiply}
 .wall .fx{z-index:3}
@@ -202,7 +203,7 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
 @media (min-width:760px){
   .wrap{padding:0 32px}
   .hero-copy{padding:36px 32px 104px}
-  .wall{--seam-h:64px}
+  .wall{--seam-h:64px;--board:56px}
   .actions{grid-template-columns:auto auto;justify-content:start}
   .seam{height:64px}
   .sec{padding:64px 0 76px}
@@ -496,12 +497,13 @@ var Loop = (function(){
     var W, H, dpr, RES = 2, lines, gw, gh, siding, grimeTex, mask, mctx, layer, lctx, wet, wctx, regrowTex, sprites = [];
     var jet = { x: 0, y: 0, px: 0, py: 0 }, user = { active: false, t: -1e9, x: 0, y: 0 };
     var drops = [], maxDrops = PHONE ? CFG.DROPS_PHONE : CFG.DROPS_DESK, seed = 7 + idx * 101, phase = idx * 2.1;
-    var frameN = 0, cleanPct = 0;
+    var frameN = 0, cleanPct = 0, BOARD = 22;
 
     function build(){
       var r = el.getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
       dpr = Math.min(window.devicePixelRatio || 1, PHONE ? 1.5 : 2);
       gw = Math.ceil(W / RES); gh = Math.ceil(H / RES);
+      BOARD = overlay ? (parseFloat(getComputedStyle(el).getPropertyValue('--board')) || 40) : 22;   // match the wall's CSS boards
       RAD = CFG.JET_RADIUS * (PHONE ? .85 : 1) * (overlay && !PHONE ? 1.4 : 1);
       if (overlay) { cv.width = gw; cv.height = gh; fxc.width = Math.round(W * dpr); fxc.height = Math.round(H * dpr); }
       else { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
@@ -528,7 +530,7 @@ var Loop = (function(){
         var R = 84 + (118 - 84) * c + b * 14, G = 98 + (100 - 98) * c + b * 10, Bc = 56 + (62 - 56) * c + b * 6;
         var dark = streak[px] * (py / gh); R -= 30 * dark; G -= 26 * dark; Bc -= 18 * dark;
         if (b > .86) { R -= 14; G -= 12; Bc -= 8; }   // speckle
-        var lap = ((py * RES) % 22) / 22, under = lap > .62 ? (lap - .62) / .38 : 0;   // mildew collects under each board lip
+        var lap = ((py * RES) % BOARD) / BOARD, under = (lap > .62 ? (lap - .62) / .38 : 0) * (overlay ? .3 : 1);   // mildew collects under each board lip
         R -= 26 * under; G -= 14 * under; Bc -= 16 * under;
         R -= 6; G += 6; Bc += 4;
         if (overlay) { R = 255 - (255 - R) * .8; G = 255 - (255 - G) * .78; Bc = 255 - (255 - Bc) * .85; }   // multiply-friendly: lighter, it darkens what's under it
