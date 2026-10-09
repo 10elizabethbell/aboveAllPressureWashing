@@ -129,7 +129,6 @@ section{position:relative}
 /* Proof */
 .proof h2{color:var(--navy)}
 .slider{margin-top:22px}
-.pair{margin-top:22px}
 .slider{position:relative;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:6px solid #fff;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%;background:var(--mist-2)}
 .slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;pointer-events:none;-webkit-user-drag:none}
 .slider .after{clip-path:inset(0 0 0 var(--pos))}
@@ -139,9 +138,7 @@ section{position:relative}
 .tag{position:absolute;top:10px;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;pointer-events:none}
 .tag.b{left:10px;background:rgba(30,26,77,.82);color:#fff}
 .tag.a{right:10px;background:#fff;color:var(--navy)}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pair figure{margin:0;position:relative;aspect-ratio:278/404;border-radius:var(--radius);overflow:hidden;border:6px solid #fff;box-shadow:var(--shadow);background:var(--mist-2)}
-.pair img{width:100%;height:100%;object-fit:cover}
+.slider.tall{aspect-ratio:278/404;max-width:420px;margin-inline:auto}
 
 /* Reviews */
 .reviews{margin-top:40px}
@@ -199,7 +196,6 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .seam{height:64px}
   .sec{padding:64px 0 76px}
   .quotes li{flex-basis:44%}
-  .pair{gap:16px}
 }
 @media (min-width:1000px){
   .desk{display:inline}
@@ -212,7 +208,7 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .hero-copy > *{max-width:780px}
   .wall .wash-hint{left:auto;right:max(32px,calc((100vw - 1180px)/2 + 32px))}
   .wall .wash-score{right:max(32px,calc((100vw - 1180px)/2 + 32px));bottom:calc(var(--seam-h) + 70px)}
-  .svc-group{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);gap:56px;align-items:start}
+  .svc-group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:56px;align-items:start}
   .svc-group .svc-list{margin-top:6px}
   .svc-group + .svc-group{margin-top:80px}
   .proof-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:end}
@@ -321,8 +317,8 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
     <div class="proof-grid">
       <div>
         <h2 id="proof-h">Before. After.</h2>
-        <p class="lede">From Above All’s project gallery. Drag the jet across the pavers.</p>
-        <div class="slider" id="slider" role="slider" tabindex="0" aria-label="Before and after: brick pavers" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after">
+        <p class="lede">From Above All’s project gallery. Drag the jet across each photo.</p>
+        <div class="slider" role="slider" tabindex="0" aria-label="Before and after: brick pavers" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after">
           <img data-src="img-pav-b" alt="Pavers before washing: dark, weedy joints" width="600" height="195" draggable="false">
           <img class="after" data-src="img-pav-a" alt="Pavers after washing: bright red brick, clean joints" width="600" height="195" draggable="false">
           <span class="tag b">Before · pavers</span><span class="tag a">After</span>
@@ -331,9 +327,12 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
         </div>
       </div>
       <div>
-        <div class="pair">
-          <figure><img data-src="img-sid-b" alt="Siding before: green mildew film" width="278" height="404" draggable="false"><span class="tag b">Before · siding</span></figure>
-          <figure><img data-src="img-sid-a" alt="Siding after: clean pale blue siding" width="278" height="404" draggable="false"><span class="tag a">After</span></figure>
+        <div class="slider tall" role="slider" tabindex="0" aria-label="Before and after: vinyl siding" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after">
+          <img data-src="img-sid-b" alt="Siding before: green mildew film" width="278" height="404" draggable="false">
+          <img class="after" data-src="img-sid-a" alt="Siding after: clean pale blue siding" width="278" height="404" draggable="false">
+          <span class="tag b">Before · siding</span><span class="tag a">After</span>
+          <span class="jet"></span>
+          <span class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
         </div>
       </div>
     </div>
@@ -733,8 +732,8 @@ var Loop = (function(){
 })();
 
 /* ===== Before/after slider: drag the jet ===== */
-(function(){
-  var s = document.getElementById('slider'), pos = 50, drag = null;
+document.querySelectorAll('.slider').forEach(function(s){
+  var pos = 50, drag = null;
   function set(p){ pos = Math.max(0, Math.min(100, p)); s.style.setProperty('--pos', pos + '%'); s.setAttribute('aria-valuenow', Math.round(pos)); s.setAttribute('aria-valuetext', Math.round(100 - pos) + '% after'); }
   function at(x){ var r = s.getBoundingClientRect(); set((x - r.left) / r.width * 100); }
   s.addEventListener('pointerdown', function(e){ if (e.pointerType === 'touch') return; e.preventDefault(); drag = true; s.setPointerCapture(e.pointerId); at(e.clientX); });
@@ -747,7 +746,7 @@ var Loop = (function(){
     if (side) at(t.clientX); }, { passive: true });
   s.addEventListener('touchend', function(){ if (t0 && !side) {} t0 = null; }, { passive: true });
   s.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') { set(pos - 5); e.preventDefault(); } if (e.key === 'ArrowRight') { set(pos + 5); e.preventDefault(); } });
-})();
+});
 
 /* ===== Lazy images from the data blocks at the end of the file ===== */
 (function(){
