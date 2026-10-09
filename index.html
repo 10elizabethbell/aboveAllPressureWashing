@@ -26,7 +26,7 @@
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overscroll-behavior-y:none}
 body{margin:0;background:var(--mist);color:var(--ink);font:400 17px/1.55 var(--font);overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-underline-offset:.2em}
@@ -466,7 +466,7 @@ var Loop = (function(){
     var cv = el.querySelector(overlay ? 'canvas.grime' : 'canvas'), ctx = cv.getContext('2d'), score = el.querySelector('.wash-score');
     var fxc = overlay ? el.querySelector('canvas.fx') : cv, fctx = fxc.getContext('2d'), RAD = 1, down = false;
     var W, H, dpr, RES = 2, lines, gw, gh, siding, grimeTex, mask, mctx, layer, lctx, wet, wctx, regrowTex, sprites = [];
-    var jet = { x: 0, y: 0, px: 0, py: 0 }, user = { active: false, t: -1e9, x: 0, y: 0 };
+    var jet = { x: 0, y: 0, px: 0, py: 0 }, user = { active: false, t: -1e9, x: 0, y: 0, cx: null, cy: null };
     var drops = [], maxDrops = PHONE ? CFG.DROPS_PHONE : CFG.DROPS_DESK, seed = 7 + idx * 101, phase = idx * 2.1;
     var frameN = 0, cleanPct = 0, BOARD = 22;
 
@@ -593,6 +593,7 @@ var Loop = (function(){
     function step(t, dt){
       frameN++;
       var now = performance.now(), mine = user.active || (now - user.t < CFG.IDLE_RETURN_MS);
+      if (user.active && user.cx !== null) { var lr = el.getBoundingClientRect(); user.x = user.cx - lr.left; user.y = Math.max(0, Math.min(H, user.cy - lr.top)); }
       var tt = t * CFG.AUTO_SPEED + phase;
       // idle wand: horizontal passes, slowly drifting down and up, like a real wash
       var ax = W * (.5 + .4 * Math.sin(tt * 1.05) + .06 * Math.sin(tt * 2.9 + 1.3));
@@ -635,7 +636,7 @@ var Loop = (function(){
     }
     function drive(cx, cy, burst){
       var l = hover(cx, cy); if (!l) return;
-      user.x = l.x; user.y = l.y; user.t = performance.now(); el.classList.add('touched');
+      user.x = l.x; user.y = l.y; user.cx = cx; user.cy = cy; user.t = performance.now(); el.classList.add('touched');
       if (burst) { jet.x = l.x; jet.y = l.y; emit(14, 0, 0); }
       if (REDUCED) { washAt(l.x, l.y, 1); render(0); }
     }
