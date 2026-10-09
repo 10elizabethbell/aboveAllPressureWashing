@@ -209,8 +209,14 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .svc-group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:56px;align-items:start}
   .svc-group .svc-list{margin-top:6px}
   .svc-group + .svc-group{margin-top:80px}
-  .proof-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:start}
-  .gal-h{margin-top:0}
+  /* columns flatten into one grid so the siding slider and the top gallery photo share a row */
+  .proof-grid{display:grid;grid-template-columns:1.15fr 1fr;column-gap:40px;align-items:start}
+  .proof-grid > div{display:contents}
+  .proof-head{grid-column:1;grid-row:1}
+  .gal-h{grid-column:2;grid-row:1;align-self:end;margin-top:0}
+  .proof-grid .slider{grid-column:1;grid-row:2;margin-top:22px}
+  .proof-grid .gallery{grid-column:2;grid-row:2;margin-top:22px}
+  .proof-grid .fb-link{grid-column:2;grid-row:3;justify-self:start}
   .quotes{margin:18px 0 0;padding:4px 0 14px}
   .quotes li{flex-basis:31.5%}
   .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
@@ -314,8 +320,8 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
   <div class="wrap">
     <div class="proof-grid">
       <div>
-        <h2 id="proof-h">My work.</h2>
-        <p class="lede">Real jobs I’ve done. Drag the jet across the siding.</p>
+        <div class="proof-head"><h2 id="proof-h">My work.</h2>
+        <p class="lede">Real jobs I’ve done. Drag the jet across the siding.</p></div>
         <div class="slider tall" role="slider" tabindex="0" aria-label="Before and after: vinyl siding" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after">
           <img data-src="img-sid-b" alt="Siding before: green mildew film" width="278" height="404" draggable="false">
           <img class="after" data-src="img-sid-a" alt="Siding after: clean pale blue siding" width="278" height="404" draggable="false">
