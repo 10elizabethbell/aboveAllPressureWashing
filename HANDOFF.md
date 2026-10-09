@@ -15,6 +15,9 @@
 
 - **Headline swap (2026-10-09, Ellie):** the hero headline is now "Detailed. Organized. Honest. Fast." with "My promise, every job." under it. The services line ("Pressure washing, soft washing, gutters and shrink wrapping across Ocean & Monmouth County.") was removed. "Like a whole new home." moved to the area section, where the promise list was.
 
+- **Siding photo sharpened (2026-10-09):** their site only has the siding pair at about 300x404 per side, so it was blurry when stretched to the slider. Both halves were upscaled 3x with an AI super-resolution model (OpenCV EDSR) from the original JPEG, then saved as WebP (q72). The page is about 100KB heavier for it. A full-size original from Sean would be better still.
+- **Favicon (2026-10-09):** the house-and-wand mark cropped from the logo (the full wordmark is unreadable at tab size), plus a 180px home-screen icon on white.
+
 ## Assumptions I made
 - **Voice (Ellie's rule, 2026-10-08):** every line on the page speaks in first person, as Sean ("I", "me", "my"): "Text me", "My work.", "Words from my clients", "I come out…", "My promise, every job." Customer testimonials stay verbatim (they're quotes), and so do the pre-filled text messages (the customer writes those to Sean).
 - **Muse missed assets that were on their site.** aboveallprowash.com has the logo (`/images/logo.png`), an email (`info@AboveAllTeam.com`, in their header) and two before/after "projects" images. I used all of them. The before/after photos are assumed to be Sean's own work because they're published as his projects.
