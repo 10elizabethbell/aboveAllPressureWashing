@@ -12,7 +12,7 @@
 - **Tunables** at the top of the main `<script>` (`CFG`): jet radius, regrow speed (0.0045), idle wand speed, droplet counts, seam speed/amplitude. One shared animation loop; panels and seams pause off screen; reduced motion gets a still frame with one clean stripe.
 
 ## Assumptions I made
-- **Voice (Ellie's rule, 2026-10-08):** every line on the page speaks in first person, as Sean ("I", "me", "my"): "Text me", "My work.", "What my clients say", "I come out…", "My promise, every job." Customer testimonials stay verbatim (they're quotes), and so do the pre-filled text messages (the customer writes those to Sean).
+- **Voice (Ellie's rule, 2026-10-08):** every line on the page speaks in first person, as Sean ("I", "me", "my"): "Text me", "My work.", "Words from my clients", "I come out…", "My promise, every job." Customer testimonials stay verbatim (they're quotes), and so do the pre-filled text messages (the customer writes those to Sean).
 - **Muse missed assets that were on their site.** aboveallprowash.com has the logo (`/images/logo.png`), an email (`info@AboveAllTeam.com`, in their header) and two before/after "projects" images. I used all of them. The before/after photos are assumed to be Sean's own work because they're published as his projects.
 - **Left out on purpose:** their service photos (blue-shirt workers on roofs and gutters) look like stock. Their shrink-wrap "project" photo looks AI-generated (a model wearing an "Above All" shirt). Neither is used as proof.
 - **Painting and vinyl flooring** exist on their site but are commented out of the HTML, so I treated them as discontinued and left them off. Pest control is the sister brand and stays off too (per Muse's note).
