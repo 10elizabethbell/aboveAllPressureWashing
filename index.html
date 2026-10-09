@@ -123,17 +123,8 @@ section{position:relative}
 @media (hover:hover){.svc a:hover .go{background:var(--sky);transform:translateX(4px)}}
 .svc a:active .go{background:var(--sky)}
 
-/* Shrink-wrap season panel: the film itself (sheen follows the finger) */
-.wrapfilm{--mx:70%;--my:20%;position:relative;margin-top:30px;border-radius:24px;padding:26px 20px 22px;color:var(--ink);overflow:hidden;
-  background:
-    radial-gradient(260px 200px at var(--mx) var(--my),rgba(255,255,255,.95),rgba(255,255,255,0) 70%),
-    linear-gradient(160deg,#dcecf8,#b9d9ef 55%,#cfe5f4);
-  box-shadow:0 18px 40px -18px rgba(0,0,0,.5);touch-action:pan-y}
-.wrapfilm h3{font-size:clamp(1.7rem,7.4vw,2.6rem);color:var(--navy)}
-.wrapfilm p{margin-top:10px;color:var(--ink);max-width:56ch}
-.wrapfilm .items{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.wrapfilm .items li{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.7);font-weight:800;font-size:14px;color:var(--navy)}
-.wrapfilm .btn{margin-top:20px}
+/* Second service group (shrink wrap) sits under the home group */
+.svc-group + .svc-group{margin-top:56px}
 
 /* Proof */
 .proof h2{color:var(--navy)}
@@ -221,8 +212,9 @@ footer a{color:#fff;display:inline-block;padding:12px 0}
   .hero-copy > *{max-width:780px}
   .wall .wash-hint{left:auto;right:max(32px,calc((100vw - 1180px)/2 + 32px))}
   .wall .wash-score{right:max(32px,calc((100vw - 1180px)/2 + 32px));bottom:calc(var(--seam-h) + 70px)}
-  .svc-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:start}
-  .wrapfilm{margin-top:0;padding:36px 34px 32px}
+  .svc-group{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);gap:56px;align-items:start}
+  .svc-group .svc-list{margin-top:6px}
+  .svc-group + .svc-group{margin-top:80px}
   .proof-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:end}
   .quotes{margin:18px 0 0;padding:4px 0 14px}
   .quotes li{flex-basis:31.5%}
@@ -276,10 +268,10 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
 
 <main>
 <section class="sec navy on-navy" id="services" aria-labelledby="svc-h">
-  <div class="wrap svc-grid">
-    <div>
-      <h2 id="svc-h">Every part of your home.</h2>
-      <p class="lede">A-la-carte pricing or a package deal, depending on what you need. Tap a service to text Sean about it.</p>
+  <div class="wrap">
+    <div class="svc-group">
+      <div><h2 id="svc-h">Every part of your home.</h2>
+      <p class="lede">A-la-carte pricing or a package deal, depending on what you need. Tap a service to text Sean about it.</p></div>
       <ul class="svc-list">
         <li class="svc"><a data-sms="power washing" href="sms:+17326003447">
           <div><h3>Power washing</h3>
@@ -297,11 +289,27 @@ FORM: Single file, system type, heavy uppercase display, sentence-case body. Lig
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
       </ul>
     </div>
-    <div class="wrapfilm" id="wrapfilm">
-      <h3>Protect your investment this off season.</h3>
-      <p>Keep it clean, dry and protected all winter long. Shrink wrap makes a strong, weather-resistant barrier against rain, snow, dirt and dust. Sean handles it from start to finish.</p>
-      <ul class="items"><li>Boats &amp; watercraft</li><li>Outdoor furniture</li><li>Grills</li><li>Hot tubs</li><li>Equipment</li><li>Patio equipment</li></ul>
-      <a class="btn btn-primary" data-sms="shrink wrapping. What I need wrapped:" href="sms:+17326003447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Text to book shrink wrap<span class="desk">&nbsp;· 732-600-3447</span></span></a>
+    <div class="svc-group" aria-labelledby="wrap-h">
+      <div><h2 id="wrap-h">Boats and equipment.</h2>
+      <p class="lede">Protect your investment this off season. Shrink wrap makes a strong, weather-resistant barrier against rain, snow, dirt and dust, and Sean handles it from start to finish.</p></div>
+      <ul class="svc-list">
+        <li class="svc"><a data-sms="shrink wrapping my boat" href="sms:+17326003447">
+          <div><h3>Boats &amp; watercraft</h3>
+            <p>Wrapped tight for winter storage or transport, so rain, snow and dirt stay off it until spring.</p></div>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li class="svc"><a data-sms="shrink wrapping my hot tub" href="sms:+17326003447">
+          <div><h3>Hot tubs</h3>
+            <p>A weather-resistant cover that keeps snow, dirt and dust out all winter long.</p></div>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li class="svc"><a data-sms="shrink wrapping my outdoor furniture and grill" href="sms:+17326003447">
+          <div><h3>Outdoor furniture &amp; grills</h3>
+            <p>Patio sets, grills and patio equipment stay clean and dry instead of sitting out in the weather.</p></div>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li class="svc"><a data-sms="shrink wrapping my equipment" href="sms:+17326003447">
+          <div><h3>Equipment</h3>
+            <p>Equipment you store or move over the off season, sealed against rain, snow, dirt and dust.</p></div>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -722,19 +730,6 @@ var Loop = (function(){
     draw(0);
     if (!REDUCED) Loop.add(function(t){ draw(t); }, el);
   });
-})();
-
-/* ===== Shrink film sheen follows the finger ===== */
-(function(){
-  var f = document.getElementById('wrapfilm');
-  function move(x, y){ var r = f.getBoundingClientRect(); f.style.setProperty('--mx', ((x - r.left) / r.width * 100).toFixed(1) + '%'); f.style.setProperty('--my', ((y - r.top) / r.height * 100).toFixed(1) + '%'); }
-  f.addEventListener('pointermove', function(e){ move(e.clientX, e.clientY); }, { passive: true });
-  f.addEventListener('touchmove', function(e){ move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
-  if (!REDUCED) Loop.add(function(t){
-    if (f.matches(':hover')) return;
-    f.style.setProperty('--mx', (60 + 30 * Math.sin(t * .6)).toFixed(1) + '%');
-    f.style.setProperty('--my', (30 + 25 * Math.sin(t * .45 + 1)).toFixed(1) + '%');
-  }, f);
 })();
 
 /* ===== Before/after slider: drag the jet ===== */
